@@ -46,6 +46,7 @@ def transition_matrix(bigrams):
 
 print(transition_matrix(bigrams))
 
+#vizualizace matice
 plt.figure(figsize=(10, 8))
 sns.heatmap(transition_matrix(bigrams), xticklabels=alphabet, yticklabels=alphabet, cmap='viridis')
 plt.title("Relativní přechodová matice bigramů")
