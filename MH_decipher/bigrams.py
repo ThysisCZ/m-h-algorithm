@@ -23,7 +23,7 @@ print(bigrams)
 alphabet = list("VLZODTQHUXWSERMCFKNYIBJGP_A")
 
 #funkce pro vytvoreni prechodove matice
-def transition_matrix(bigrams):
+def transition_matrix(bigrams, alphabet):
     n = len(alphabet)
     #matice vyplnena nulami
     TM = np.zeros((n, n))
@@ -44,10 +44,10 @@ def transition_matrix(bigrams):
     
     return TM
 
-print(transition_matrix(bigrams))
+print(transition_matrix(bigrams, alphabet))
 
 #vizualizace matice
 plt.figure(figsize=(10, 8))
-sns.heatmap(transition_matrix(bigrams), xticklabels=alphabet, yticklabels=alphabet, cmap='viridis')
+sns.heatmap(transition_matrix(bigrams, alphabet), xticklabels=alphabet, yticklabels=alphabet, cmap='viridis')
 plt.title("Relativní přechodová matice bigramů")
 plt.show()
