@@ -1,4 +1,6 @@
 import numpy as np
+import matplotlib.pyplot as plt
+import seaborn as sns
 
 text = "ABM_DEAOMARDHMAVA_VNAERDALD_UAOMAZDNYPAA_VZHBDSVANDAYVWAWIOPABCKVBMARDLMABSDBMAYDOPAXDAWMRDZACYVSANDAYUNDACMWPBSV" \
 "AHSVBMIAYDOPAXDAWMRDZAMYDBKDSAOBUKWVABPNWMZUSA_ABM_IAVACMNYVBUSANDACKDOAWMSVAXDOAKDWSAZHKVCYUBDACMXDODNACKDNDAER" \
@@ -43,3 +45,8 @@ def transition_matrix(bigrams):
     return TM
 
 print(transition_matrix(bigrams))
+
+plt.figure(figsize=(10, 8))
+sns.heatmap(transition_matrix(bigrams), xticklabels=alphabet, yticklabels=alphabet, cmap='viridis')
+plt.title("Relativní přechodová matice bigramů")
+plt.show()
