@@ -1,6 +1,6 @@
-import numpy as np
-import matplotlib.pyplot as plt
-import seaborn as sns
+from bigrams import transition_matrix
+from bigrams import get_bigrams
+import math
 
 input = "ABM_DEAOMARDHMAVA_VNAERDALD_UAOMAZDNYPAA_VZHBDSVANDAYVWAWIOPABCKVBMARDLMABSDBMAYDOPAXDAWMRDZACYVSANDAYUNDACMWPBSV" \
 "AHSVBMIAYDOPAXDAWMRDZAMYDBKDSAOBUKWVABPNWMZUSA_ABM_IAVACMNYVBUSANDACKDOAWMSVAXDOAKDWSAZHKVCYUBDACMXDODNACKDNDAER" \
@@ -12,42 +12,26 @@ input = "ABM_DEAOMARDHMAVA_VNAERDALD_UAOMAZDNYPAA_VZHBDSVANDAYVWAWIOPABCKVBMARDL
 "DAZSMBDWACKURZD_RVAEPNSUANUA_DAXDARVANBDYDANVEAEVNAXUAKVOACMHSDOSARVARUAIYKP_RDRPEVAMZUEVACKDZDAXDRARDOMBDOSA_VCKUYAA" \
 "YVWABUOUNABPODZHSVAYPARDIEUNAVRUASHVYAYPAEUSPAVSDACMZHMCAWOP_AXNDEANUAYMACVW"
 
-#funkce pro ziskani bigramu z textu
-def get_bigrams(text):
-    n = len(text)
-    return [text[i:i+2] for i in range(0, n - 1)]
-
-bigrams = get_bigrams(input)
-print(bigrams)
-
 alphabet = list("VLZODTQHUXWSERMCFKNYIBJGP_A")
 
-#funkce pro vytvoreni prechodove matice
-def transition_matrix(bigrams, alphabet):
-    n = len(alphabet)
-    #matice vyplnena nulami
-    TM = np.zeros((n, n))
+bigrams = get_bigrams(input)
 
-    #vypocet vyskytu po sobe jdoucich znaku
-    for bigram in bigrams:
-        c1 = bigram[0]
-        c2 = bigram[1]
-        i = alphabet.index(c1)
-        j = alphabet.index(c2)
-        TM[i][j] += 1
+def plausibility(text, TM_ref):
+    #bigramy aktualniho textu
+    bigrams_obs = get_bigrams(text)
     
-    #nahrazeni vsech nul jednickou
-    TM[TM == 0] = 1
-
-    #deleni hodnot poctem bigramu
-    TM /= len(bigrams)
+    #matice aktualniho textu
+    matrix_obs = transition_matrix(bigrams_obs, alphabet)
+    #matice referencniho textu
+    matrix_ref = TM_ref(bigrams, alphabet)
     
-    return TM
+    likelihood = 0
 
-print(transition_matrix(bigrams, alphabet))
-
-#vizualizace matice
-plt.figure(figsize=(10, 8))
-sns.heatmap(transition_matrix(bigrams, alphabet), xticklabels=alphabet, yticklabels=alphabet, cmap='viridis')
-plt.title("Relativní přechodová matice bigramů")
-plt.show()
+    #vypocet verohodnosti
+    for i in range(0, len(alphabet)):
+        for j in range(0, len(alphabet)):
+            likelihood = likelihood + math.log(matrix_ref[i][j]) * matrix_obs[i][j]
+    
+    return likelihood
+    
+print("Likelihood:", plausibility(input, transition_matrix))
