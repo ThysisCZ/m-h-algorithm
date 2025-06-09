@@ -16,6 +16,8 @@ alphabet = list("VLZODTQHUXWSERMCFKNYIBJGP_A")
 
 bigrams = get_bigrams(input)
 
+matrix_ref = transition_matrix(bigrams, alphabet)
+
 def plausibility(text, TM_ref):
     #bigramy aktualniho textu
     bigrams_obs = get_bigrams(text)
@@ -23,7 +25,7 @@ def plausibility(text, TM_ref):
     #matice aktualniho textu
     matrix_obs = transition_matrix(bigrams_obs, alphabet)
     #matice referencniho textu
-    matrix_ref = TM_ref(bigrams, alphabet)
+    matrix_ref = TM_ref
     
     likelihood = 0
 
@@ -34,4 +36,4 @@ def plausibility(text, TM_ref):
     
     return likelihood
     
-print("Likelihood:", plausibility(input, transition_matrix))
+print("Likelihood:", plausibility(input, matrix_ref))
