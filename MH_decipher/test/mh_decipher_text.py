@@ -1,15 +1,15 @@
 import unittest
 
-import MH_decipher.substitute_decrypt
+import MH_decipher.substitute_encrypt
 
 
 class TestMHDecipher(unittest.TestCase):
 
-    def test_substitute_decrypt(self):
-        text = "EAOCSRBGQLCYHFHUCSUYQLCPDMCYHFHUQLCPDMCEAOCODVNACFDV"
+    def test_substitute_encrypt(self):
+        text = "BYL_POZDNI_VECER_PRVNI_MAJ_VECERNI_MAJ_BYL_LASKY_CAS"
         key = "DEFGHIJKLMNOPQRSTUVWXYZ_ABC"
-        output_expected = "BYL_POZDNI_VECER_PRVNI_MAJ_VECERNI_MAJ_BYL_LASKY_CAS"
-        output_actual = MH_decipher.substitute_decrypt.substitute_decrypt(text, key)
+        output_expected = "EAOCSRBGQLCYHFHUCSUYQLCPDMCYHFHUQLCPDMCEAOCODVNACFDV"
+        output_actual = MH_decipher.substitute_encrypt.substitute_encrypt(text, key)
         self.assertEqual(output_expected, output_actual)
 
 
