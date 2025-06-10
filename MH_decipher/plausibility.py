@@ -12,7 +12,7 @@ input = "ABM_DEAOMARDHMAVA_VNAERDALD_UAOMAZDNYPAA_VZHBDSVANDAYVWAWIOPABCKVBMARDL
 "DAZSMBDWACKURZD_RVAEPNSUANUA_DAXDARVANBDYDANVEAEVNAXUAKVOACMHSDOSARVARUAIYKP_RDRPEVAMZUEVACKDZDAXDRARDOMBDOSA_VCKUYAA" \
 "YVWABUOUNABPODZHSVAYPARDIEUNAVRUASHVYAYPAEUSPAVSDACMZHMCAWOP_AXNDEANUAYMACVW"
 
-alphabet = list("VLZODTQHUXWSERMCFKNYIBJGP_A")
+alphabet = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ_")
 
 bigrams = get_bigrams(input)
 
@@ -32,7 +32,7 @@ def plausibility(text, TM_ref):
     #vypocet verohodnosti
     for i in range(0, len(alphabet)):
         for j in range(0, len(alphabet)):
-            likelihood = likelihood + math.log(matrix_ref[i][j]) * matrix_obs[i][j]
+            likelihood += math.log(matrix_ref[i][j]) * matrix_obs[i][j]
     
     return likelihood
     
