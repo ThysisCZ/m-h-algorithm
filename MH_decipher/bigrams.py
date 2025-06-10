@@ -20,7 +20,7 @@ def get_bigrams(text):
 bigrams = get_bigrams(input)
 print(bigrams)
 
-alphabet = list("VLZODTQHUXWSERMCFKNYIBJGP_A")
+alphabet = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ_")
 
 #funkce pro vytvoreni prechodove matice
 def transition_matrix(bigrams, alphabet):
