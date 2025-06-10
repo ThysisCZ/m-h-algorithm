@@ -1,7 +1,7 @@
-from plausibility import plausibility
-from mutate_key import mutate_key
-from substitute_decrypt import substitute_decrypt
-from bigrams import transition_matrix, get_bigrams
+from MH_decipher.plausibility import plausibility
+from MH_decipher.mutate_key import mutate_key
+from MH_decipher.substitute_decrypt import substitute_decrypt
+from MH_decipher.bigrams import transition_matrix, get_bigrams
 from typing import List
 import math
 
@@ -34,17 +34,17 @@ bigrams = get_bigrams(book)
 matrix_ref = transition_matrix(bigrams, current_key)
 
 #verohodnost aktualniho klice
-p_current = plausibility(decrypted_current, matrix_ref)
+p_current = plausibility(decrypted_current, matrix_ref, current_key)
 
 def probability (text, TM_ref, current: List[str]):
     #prohozeni dvou znaku
     candidate_key = mutate_key(current)
 
     decrypted_candidate = substitute_decrypt(text, candidate_key)
-    p_candidate = plausibility(decrypted_candidate, TM_ref)
+    p_candidate = plausibility(decrypted_candidate, TM_ref, current)
 
     #vypocet pravdepodobnosti prijeti noveho klice
-    probability = min(1, math.exp(p_candidate - p_current))
+    probability = min(1.0, math.exp(p_candidate - p_current))
 
     return probability
 

@@ -1,5 +1,5 @@
-from bigrams import transition_matrix
-from bigrams import get_bigrams
+from MH_decipher.bigrams import transition_matrix
+from MH_decipher.bigrams import get_bigrams
 import math
 
 input = "ABM_DEAOMARDHMAVA_VNAERDALD_UAOMAZDNYPAA_VZHBDSVANDAYVWAWIOPABCKVBMARDLMABSDBMAYDOPAXDAWMRDZACYVSANDAYUNDACMWPBSV" \
@@ -18,20 +18,28 @@ bigrams = get_bigrams(input)
 
 matrix_ref = transition_matrix(bigrams, alphabet)
 
-def plausibility(text, TM_ref):
+def plausibility(text, TM_ref, alphabet_param=None):
+    # Pokud není zadána abeceda, použije se globální
+    if alphabet_param is None:
+        alphabet_param = alphabet
+    
     #bigramy aktualniho textu
     bigrams_obs = get_bigrams(text)
     
+    # Prázdný text má nulovou věrohodnost
+    if len(bigrams_obs) == 0:
+        return 0.0
+    
     #matice aktualniho textu
-    matrix_obs = transition_matrix(bigrams_obs, alphabet)
+    matrix_obs = transition_matrix(bigrams_obs, alphabet_param)
     #matice referencniho textu
     matrix_ref = TM_ref
     
     likelihood = 0
 
     #vypocet verohodnosti
-    for i in range(0, len(alphabet)):
-        for j in range(0, len(alphabet)):
+    for i in range(0, len(alphabet_param)):
+        for j in range(0, len(alphabet_param)):
             likelihood = likelihood + math.log(matrix_ref[i][j]) * matrix_obs[i][j]
     
     return likelihood

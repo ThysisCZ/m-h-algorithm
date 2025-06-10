@@ -30,17 +30,27 @@ def transition_matrix(bigrams, alphabet):
 
     #vypocet vyskytu po sobe jdoucich znaku
     for bigram in bigrams:
-        c1 = bigram[0]
-        c2 = bigram[1]
-        i = alphabet.index(c1)
-        j = alphabet.index(c2)
-        TM[i][j] += 1
+        if len(bigram) >= 2:  # Kontrola, že bigram má alespoň 2 znaky
+            c1 = bigram[0]
+            c2 = bigram[1]
+            # Kontrola, že znaky jsou v abecedě
+            if c1 in alphabet and c2 in alphabet:
+                i = alphabet.index(c1)
+                j = alphabet.index(c2)
+                TM[i][j] += 1
     
-    #nahrazeni vsech nul jednickou
-    TM[TM == 0] = 1
+    #nahrazeni vsech nul jednickou a pridani 1 k existujicim hodnotam
+    for i in range(n):
+        for j in range(n):
+            if TM[i][j] == 0:
+                TM[i][j] = 1
+            else:
+                TM[i][j] += 1
 
-    #deleni hodnot poctem bigramu
-    TM /= len(bigrams)
+    #deleni hodnot poctem bigramu - ochrana proti deleni nulou
+    if len(bigrams) > 0:
+        TM /= len(bigrams)
+    # Pokud nejsou žádné bigramy, matice zůstane se samými jedničkami
     
     return TM
 

@@ -1,6 +1,6 @@
 import unittest
 
-import MH_decipher.substitute_decrypt
+from MH_decipher.substitute_decrypt import substitute_decrypt
 
 
 class TestMHDecipher(unittest.TestCase):
@@ -9,7 +9,7 @@ class TestMHDecipher(unittest.TestCase):
         text = "EAOCSRBGQLCYHFHUCSUYQLCPDMCYHFHUQLCPDMCEAOCODVNACFDV"
         key = "DEFGHIJKLMNOPQRSTUVWXYZ_ABC"
         output_expected = "BYL_POZDNI_VECER_PRVNI_MAJ_VECERNI_MAJ_BYL_LASKY_CAS"
-        output_actual = MH_decipher.substitute_decrypt.substitute_decrypt(text, key)
+        output_actual = substitute_decrypt(text, key)
         self.assertEqual(output_expected, output_actual)
 
 
