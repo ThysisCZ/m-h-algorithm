@@ -1,7 +1,7 @@
-from .plausibility import plausibility
-from .mutate_key import mutate_key
-from .substitute_decrypt import substitute_decrypt
-from .bigrams import transition_matrix, get_bigrams
+from plausibility import plausibility
+from mutate_key import mutate_key
+from substitute_decrypt import substitute_decrypt
+from bigrams import transition_matrix, get_bigrams
 from typing import List
 import math
 
