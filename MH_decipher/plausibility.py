@@ -1,5 +1,4 @@
-from bigrams import transition_matrix
-from bigrams import get_bigrams
+from .bigrams import transition_matrix, get_bigrams
 import math
 
 input = "ABM_DEAOMARDHMAVA_VNAERDALD_UAOMAZDNYPAA_VZHBDSVANDAYVWAWIOPABCKVBMARDLMABSDBMAYDOPAXDAWMRDZACYVSANDAYUNDACMWPBSV" \
