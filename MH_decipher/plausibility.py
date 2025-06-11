@@ -1,5 +1,5 @@
-from bigrams import transition_matrix
-from bigrams import get_bigrams
+from MH_decipher.bigrams import transition_matrix
+from MH_decipher.bigrams import get_bigrams
 import math
 
 input = "ABM_DEAOMARDHMAVA_VNAERDALD_UAOMAZDNYPAA_VZHBDSVANDAYVWAWIOPABCKVBMARDLMABSDBMAYDOPAXDAWMRDZACYVSANDAYUNDACMWPBSV" \
@@ -12,7 +12,7 @@ input = "ABM_DEAOMARDHMAVA_VNAERDALD_UAOMAZDNYPAA_VZHBDSVANDAYVWAWIOPABCKVBMARDL
 "DAZSMBDWACKURZD_RVAEPNSUANUA_DAXDARVANBDYDANVEAEVNAXUAKVOACMHSDOSARVARUAIYKP_RDRPEVAMZUEVACKDZDAXDRARDOMBDOSA_VCKUYAA" \
 "YVWABUOUNABPODZHSVAYPARDIEUNAVRUASHVYAYPAEUSPAVSDACMZHMCAWOP_AXNDEANUAYMACVW"
 
-alphabet = list("ABCDEFGHIJKLMNOPQRSTUVWXYZ_")
+alphabet = list("VLZODTQHUXWSERMCFKNYIBJGP_A")
 
 bigrams = get_bigrams(input)
 
@@ -25,7 +25,7 @@ def plausibility(text, TM_ref, alphabet_param=None):
     
     #bigramy aktualniho textu
     bigrams_obs = get_bigrams(text)
-
+    
     # Prázdný text má nulovou věrohodnost
     if len(bigrams_obs) == 0:
         return 0.0
@@ -40,7 +40,7 @@ def plausibility(text, TM_ref, alphabet_param=None):
     #vypocet verohodnosti
     for i in range(0, len(alphabet_param)):
         for j in range(0, len(alphabet_param)):
-            likelihood += math.log(matrix_ref[i][j]) * matrix_obs[i][j]
+            likelihood = likelihood + math.log(matrix_ref[i][j]) * matrix_obs[i][j]
     
     return likelihood
     
