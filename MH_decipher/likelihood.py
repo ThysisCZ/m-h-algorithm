@@ -1,6 +1,6 @@
 import math
 from typing import List
-from bigrams import get_bigrams, transition_matrix
+from MH_decipher.bigrams import get_bigrams, transition_matrix
 
 def calculate_likelihood(decrypted_text: str, reference_text: str, alphabet: List[str] = None) -> float:
     """
