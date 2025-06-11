@@ -34,17 +34,17 @@ bigrams = get_bigrams(book)
 matrix_ref = transition_matrix(bigrams, current_key)
 
 #verohodnost aktualniho klice
-p_current = plausibility(decrypted_current, matrix_ref)
+p_current = plausibility(decrypted_current, matrix_ref, current_key)
 
 def probability (text, TM_ref, current: List[str]):
     #prohozeni dvou znaku
     candidate_key = mutate_key(current)
 
     decrypted_candidate = substitute_decrypt(text, candidate_key)
-    p_candidate = plausibility(decrypted_candidate, TM_ref)
+    p_candidate = plausibility(decrypted_candidate, TM_ref, current)
 
     #vypocet pravdepodobnosti prijeti noveho klice
-    probability = math.exp(p_candidate - p_current)
+    probability = min(1.0, math.exp(p_candidate - p_current))
 
     return probability
 
