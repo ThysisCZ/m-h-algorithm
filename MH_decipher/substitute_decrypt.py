@@ -1,6 +1,5 @@
 default_alphabet = "ABCDEFGHIJKLMNOPQRSTUVWXYZ_"
 
-
 def substitute_decrypt(ciphertext, key, alphabet=default_alphabet):
     key_array = list(key)
     mapping = {}
