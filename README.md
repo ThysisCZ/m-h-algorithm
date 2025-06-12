@@ -16,8 +16,14 @@ Pro instalaci potřebných balíčků použijte příkaz:
 
 ```pip install -r requirements.txt```
 
+Spuštění M-H algoritmu
+------------------------------
+Přejděte do root složky projektu a zadejte příkaz:
+
+```python -m MH_decipher.mh_algorithm```
+
 Spuštění unit testů
 ------------------------------
-Pro spuštění unit testů použijte tento příkaz v root složce projektu:
+Pro spuštění unit testů poté použijte tento příkaz v root složce projektu:
 
 ```python -m unittest discover -s MH_decipher/test -p "*.py"```
