@@ -12,8 +12,16 @@ input = "ABM_DEAOMARDHMAVA_VNAERDALD_UAOMAZDNYPAA_VZHBDSVANDAYVWAWIOPABCKVBMARDL
 "DAZSMBDWACKURZD_RVAEPNSUANUA_DAXDARVANBDYDANVEAEVNAXUAKVOACMHSDOSARVARUAIYKP_RDRPEVAMZUEVACKDZDAXDRARDOMBDOSA_VCKUYAA" \
 "YVWABUOUNABPODZHSVAYPARDIEUNAVRUASHVYAYPAEUSPAVSDACMZHMCAWOP_AXNDEANUAYMACVW"
 
-#funkce pro ziskani bigramu z textu
 def get_bigrams(text):
+    """
+    Funkce pro získání bigramů z textu.
+    
+    Args:
+        text: Posloupnost znaků, ze které chceme získat všechny bigramy
+    
+    Returns:
+        Výpis bigramů jako list
+    """
     n = len(text)
     return [text[i:i+2] for i in range(0, n - 1)]
 

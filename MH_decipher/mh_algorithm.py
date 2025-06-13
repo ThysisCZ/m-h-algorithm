@@ -33,6 +33,18 @@ start = random.sample(alphabet, 27)
 iterations = 20000
 
 def mh_algorithm(text, TM_ref, iter, start_key):
+    """
+    Funkce, která konverguje k nejlepšímu klíči podle výsledné pravděpodobnosti.
+    
+    Args:
+        text: Vstupní zašifrovaný text
+        TM_ref: Referenční matice bigramů sestrojená z nezašifrovaného textu
+        iter: Počet iterací algoritmu
+        start_key: Náhodně vygenerovaný počáteční klíč
+    
+    Returns:
+        Nejlepší klíč a dešifrovaný text jako datový typ string
+    """
     current_key = start_key
     decrypted_current = substitute_decrypt(text, current_key)
 

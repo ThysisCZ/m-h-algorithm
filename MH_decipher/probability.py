@@ -37,6 +37,17 @@ matrix_ref = transition_matrix(bigrams, current_key)
 p_current = plausibility(decrypted_current, matrix_ref, current_key)
 
 def probability (text, TM_ref, current: List[str]):
+    """
+    Funkce pro výpočet pravděpodobnosti na základě kandidátního a aktuálního klíče.
+    
+    Args:
+        text: Vstupní zašifrovaný text
+        TM_ref: Referenční matice bigramů sestrojená z nezašifrovaného textu
+        current: Aktuální klíč
+    
+    Returns:
+        Pravděpodobnost jako datový typ float v intervalu <0, 1>
+    """
     #prohozeni dvou znaku
     candidate_key = mutate_key(current)
 

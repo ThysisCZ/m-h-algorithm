@@ -13,6 +13,17 @@ text = "_VOZEM_DO_NEHO_A_ZAS_MNE_BEZI_DO_CESTY__ZACHVELA_SE_TAK_KUDY_VPRAVO_NEBO
 random_key = random.sample(default_alphabet, 27)
 
 def substitute_encrypt(plaintext, key, alphabet=default_alphabet):
+    """
+    Funkce pro zašifrování textu.
+    
+    Args:
+        plaintext: Vstupní nezašifrovaný text
+        key: Klíč, který slouží k zašifrování textu
+        alphabet: Posloupnost znaků ve formě abecedy
+    
+    Returns:
+        Zašifrovaný text jako datový typ string
+    """
     mapping = {}
     for i in range(0, len(alphabet)):
         mapping[alphabet[i]] = key[i]

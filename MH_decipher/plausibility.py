@@ -18,6 +18,17 @@ bigrams = get_bigrams(input)
 matrix_ref = transition_matrix(bigrams, alphabet)
 
 def plausibility(text, TM_ref, alphabet_param=None):
+    """
+    Funkce pro výpočet věrohodnosti textu.
+    
+    Args:
+        text: Vstupní text, u kterého chceme zjistit věrohodnost
+        TM_ref: Referenční matice bigramů sestrojená z nezašifrovaného textu
+        alphabet_param: Posloupnost znaků ve formě abecedy
+    
+    Returns:
+        Věrohodnost jako datový typ float
+    """
     # Pokud není zadána abeceda, použije se globální
     if alphabet_param is None:
         alphabet_param = alphabet

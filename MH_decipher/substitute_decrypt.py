@@ -5,6 +5,17 @@ cipher = "NGQIWFNTQNXWEQNLNILPNFXWNRWIMNTQNCWPBUNNILCEGWYLNPWNBLJNJVTUNGHZLGQNXW
 best_key = list("LRCTWODEMSJYFXQHKZPBVG_AUIN")
 
 def substitute_decrypt(ciphertext, key, alphabet=default_alphabet):
+    """
+    Funkce pro dešifrování textu.
+    
+    Args:
+        ciphertext: Vstupní zašifrovaný text
+        key: Klíč, který slouží k dešifrování textu
+        alphabet: Posloupnost znaků ve formě abecedy
+    
+    Returns:
+        Dešifrovaný text jako datový typ string
+    """
     key_array = list(key)
     mapping = {}
 
