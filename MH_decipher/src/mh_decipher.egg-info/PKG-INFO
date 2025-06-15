@@ -1,0 +1,11 @@
+Metadata-Version: 2.4
+Name: mh_decipher
+Version: 1.0.0
+Requires-Python: >=3.10
+Requires-Dist: matplotlib==3.10.3
+Requires-Dist: numpy==2.2.5
+Requires-Dist: pandas==2.2.3
+Requires-Dist: seaborn==0.13.2
+Provides-Extra: dev
+Requires-Dist: build; extra == "dev"
+Requires-Dist: pdoc; extra == "dev"

@@ -1,0 +1,13 @@
+pyproject.toml
+src/mh_decipher/__init__.py
+src/mh_decipher/bigrams.py
+src/mh_decipher/mh_algorithm.py
+src/mh_decipher/mutate_key.py
+src/mh_decipher/plausibility.py
+src/mh_decipher/substitute_decrypt.py
+src/mh_decipher/substitute_encrypt.py
+src/mh_decipher.egg-info/PKG-INFO
+src/mh_decipher.egg-info/SOURCES.txt
+src/mh_decipher.egg-info/dependency_links.txt
+src/mh_decipher.egg-info/requires.txt
+src/mh_decipher.egg-info/top_level.txt
