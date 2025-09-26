@@ -1,2 +1,2 @@
-*.jupyter-notebook linguist-detectable=false
-*.html linguist-detectable=false
+*.html linguist-vendored
+*.tex linguist-vendored
