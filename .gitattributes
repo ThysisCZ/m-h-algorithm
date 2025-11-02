@@ -1,2 +1,2 @@
-*.jupyter-notebook linguist-vendored
+*.ipynb linguist-vendored
 *.html linguist-vendored
